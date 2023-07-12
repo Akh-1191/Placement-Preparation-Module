@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if(nums.size()==0)
+            return 0;
+        map<int,int> vals;
+        for(int elem : nums){
+            vals[elem]++;
+        }
+        int count=1,maxCount=1;
+        int prev,curr;
+        map<int,int>::iterator it = vals.begin();
+        prev=it->first;
+        ++it;
+        curr=it->first;
+
+        while(it!=vals.end()){
+            if(curr-prev!=1)
+                count=1;
+            else
+                count++;
+            prev=curr;
+            it++;
+            curr=it->first;
+            maxCount= max(maxCount,count);
+            if(it==vals.end())
+                break;
+        }
+        return maxCount;
+
+    }
+};
