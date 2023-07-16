@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+        for(auto c : nums) {
+            int occurence = 0;
+            for(auto c2 : nums)
+                occurence += c == c2;
+            if(occurence == 1) return c;
+        }
+        return -1;
+    }
+};
